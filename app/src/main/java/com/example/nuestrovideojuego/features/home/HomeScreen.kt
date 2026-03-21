@@ -25,16 +25,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.nuestrovideojuego.R
 
 @Composable
-@Preview(showBackground = true, showSystemUi = true)
 fun HomeScreen(
-    viewModel: HomeScreenViewModel = viewModel()
+    viewModel: HomeScreenViewModel = viewModel(),
+    onNavigateToVideoGame: (String) -> Unit
 ){
 
     Column(
@@ -74,7 +73,7 @@ fun HomeScreen(
         OutlinedTextField(
             value = viewModel.userName.value,
             onValueChange = { viewModel.userName.onChange(it) },
-            label = { Text("Nombre del jugad") },
+            label = { Text("Nombre del jugador") },
             leadingIcon = {
                 Icon(Icons.Default.Star, contentDescription = null)
             },
@@ -89,16 +88,16 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(30.dp))
 
         Button(
-            onClick = {},
+            onClick = { onNavigateToVideoGame(viewModel.userName.value) },
             modifier = Modifier
                 .width(200.dp)
                 .height(40.dp),
+            enabled = viewModel.isFormValid,
             shape = RoundedCornerShape(50),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF6A1B9A)
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6A1B9A)
             )
         ) {
-            Text(text = "Iniciar Juego")
+            Text(text = "Iniciar")
         }
 
         Spacer(modifier = Modifier.height(15.dp))

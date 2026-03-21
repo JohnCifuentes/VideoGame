@@ -1,7 +1,7 @@
 package com.example.nuestrovideojuego.features.home
 
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.core.utils.ValidatedField
+import com.example.nuestrovideojuego.core.utils.ValidatedField
 
 class HomeScreenViewModel: ViewModel() {
 
@@ -12,5 +12,7 @@ class HomeScreenViewModel: ViewModel() {
         }
     }
 
+    val isFormValid: Boolean
+        get() = userName.isValid
 
 }

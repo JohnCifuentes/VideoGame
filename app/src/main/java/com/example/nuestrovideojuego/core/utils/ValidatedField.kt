@@ -1,4 +1,4 @@
-package com.example.myapplication.core.utils
+package com.example.nuestrovideojuego.core.utils
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
